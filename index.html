@@ -364,8 +364,8 @@ section{position:relative;padding:140px 0;}
 /* modal */
 .modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(5,5,23,0.92);backdrop-filter:blur(6px);}
 .modal.open{display:flex;}
-.modal-inner{width:min(920px,92vw);aspect-ratio:16/9;position:relative;box-shadow:0 40px 100px -30px rgba(0,0,0,0.8);}
-.modal-inner video{width:100%;height:100%;object-fit:cover;border-radius:4px;background:#000;}
+.modal-inner{position:relative;box-shadow:0 40px 100px -30px rgba(0,0,0,0.8);}
+.modal-inner video{display:block;max-width:92vw;max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:4px;background:#000;}
 .modal-close{position:absolute;top:-46px;right:0;font-family:var(--f-mono);font-weight:400;font-size:13px;color:#ffeda8;display:flex;align-items:center;gap:8px;}
 .modal-close:hover{color:var(--gold);}
 
@@ -489,14 +489,15 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     <div class="hero-media">
       <video id="heroVideo" autoplay muted loop playsinline poster="">
         <!-- Замените src на файл реального шоурила клиента (mp4/webm) -->
+        <source src="hero.mp4" type="video/mp4">
       </video>
       <div class="fallback"></div>
       <div class="grain"></div>
     </div>
     <div class="hero-content">
       <div class="wrap">
-        <h1 class="hero-title reveal">Создаём контент,<br>который продаёт.</h1>
-        <div class="hero-sub reveal"><span>Видео</span><span>Reels</span><span>Контент</span><span>SMM</span><span>Продакшн полного цикла</span></div>
+        <h1 class="hero-title reveal">МЫ ФОРМИРУЕМ <br>ЖЕЛАНИЕ КУПИТЬ</h1>
+        <div class="hero-sub reveal"><span>Полный маркетинговый фундамент: стратегия, контент, <br>реклама, дизайн и сопровождение. От идеи до конверсии.</span></div>
         <div class="hero-actions reveal">
           <a href="#contact" class="btn btn-primary">Обсудить проект <span class="arrow">→</span></a>
           <a href="#work" class="btn btn-ghost">Наши работы</a>
@@ -504,7 +505,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
       </div>
     </div>
     <div class="scrolldown"><span>SCROLL</span><span class="line"></span></div>
-    <div class="wrap"><div class="hero-region">Работаем по всему Казахстану</div></div>
   </section>
 
   <!-- ABOUT -->
@@ -517,8 +517,8 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
         <p class="dim">Работаем быстро. Думаем как маркетологи. Снимаем как кино.</p>
       </div>
       <div class="about-collage reveal">
-        <img class="ac1" src="https://picsum.photos/id/1027/900/1100" alt="Команда на съёмке">
-        <img class="ac2" src="https://picsum.photos/id/1050/700/700" alt="Процесс монтажа">
+        <img class="ac1" src="бек.jpeg" alt="Команда на съёмке">
+        <img class="ac2" src="бек1.png">
       </div>
     </div>
   </section>
@@ -589,12 +589,13 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
         <p>Каждый проект — отдельная история. Наведите курсор, чтобы увидеть превью.</p>
       </div>
       <div class="filters reveal">
+
         <button class="filter-btn active" data-filter="all">Все</button>
-        <button class="filter-btn" data-filter="business">Бизнес</button>
-        <button class="filter-btn" data-filter="reels">Reels</button>
-        <button class="filter-btn" data-filter="ads">Реклама</button>
-        <button class="filter-btn" data-filter="interview">Интервью</button>
-        <button class="filter-btn" data-filter="events">Мероприятия</button>
+        <button class="filter-btn" data-filter="Реклама">Реклама</button>
+        <button class="filter-btn" data-filter="Бизнес">Бизнес</button>
+        <button class="filter-btn" data-filter="Reels">Reels</button>
+        <button class="filter-btn" data-filter="Интервью">Интервью</button>
+        <button class="filter-btn" data-filter="Мероприятия">Мероприятия</button>
       </div>
     </div>
     <div class="wrap" style="padding:0;">
@@ -611,11 +612,11 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
         <h2 style="margin-top:14px;">За каждым сильным кадром стоит сильная команда.</h2>
       </div>
       <div class="bs-media reveal">
-        <img src="https://picsum.photos/id/1071/1400/800" alt="Backstage съёмки">
+        <img src="back.PNG" alt="Backstage съёмки">
         <div class="cap">BACKSTAGE — ON SET</div>
       </div>
       <div class="bs-gallery reveal">
-        <img src="mil.jpeg" alt="Backstage 1">
+        <img src="mil.jpeg" alt=" ">
         <img src="ad.jpeg" alt="">
         <img src="lila.jpeg" alt="">
         <img src="dau.jpeg" alt="">
@@ -634,18 +635,15 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
       <div class="testi-wrap reveal">
         <div class="testi-slide active">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Ролики, которые нам сняли, реально увеличили конверсию в заявки. Команда работает быстро и без лишних правок.</p>
-          <div class="testi-person"><img src="https://picsum.photos/id/64/100/100" alt=""><div><div class="name">Айгерим Сатова</div><div class="co">Основатель, Studio Line</div></div></div>
-        </div>
+          <p class="testi-quote">Очень рады, что выбрали именно вас! Всегда были на связи, быстро отвечали и помогали с идеями. Видео получились классные, а после публикаций начали активно приходить новые подписчики.</p>
+         </div>
         <div class="testi-slide">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Отдали продакшн полностью на аутсорс — впервые контент выходит стабильно и в срок. Отличная насмотренность.</p>
-          <div class="testi-person"><img src="https://picsum.photos/id/65/100/100" alt=""><div><div class="name">Данияр Нурлан</div><div class="co">Маркетинг-директор, Orbita</div></div></div>
-        </div>
+          <p class="testi-quote">Спасибо за такой подход к работе! Всё прошло легко и без лишних переживаний. Съёмка, монтаж - всё на уровне. Контент получился именно таким, как мы хотели.</p>
+          </div>
         <div class="testi-slide">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Профессиональный подход на каждом этапе — от сценария до цветокоррекции. Рекомендуем как надёжного подрядчика.</p>
-          <div class="testi-person"><img src="https://picsum.photos/id/91/100/100" alt=""><div><div class="name">Мадина Ахметова</div><div class="co">Бренд-менеджер, Novo</div></div></div>
+          <p class="testi-quote">Передали вам весь контент и вообще не пожалели. Не нужно было постоянно что-то контролировать - всё делалось вовремя и качественно. Аккаунт ожил, стало больше подписчиков и обращений.</p>
         </div>
         <div class="testi-nav">
           <button class="testi-dot active" data-i="0"></button>
@@ -748,22 +746,22 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
 <script>
 /* ---------- DATA: portfolio ---------- */
 const works = [
-  {cat:'business', label:'Бизнес', title:'Имиджевый ролик — сеть кофеен', video: 'https://www.instagram.com/reel/DV-p4CljCIp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='},
-  {cat:'ads', label:'Реклама', title:'Рекламная кампания — доставка еды', img:'https://picsum.photos/id/292/700/900'},
-  {cat:'reels', label:'Reels', title:'Reels-серия — бренд одежды', img:'https://picsum.photos/id/338/700/900'},
-  {cat:'interview', label:'Интервью', title:'Интервью с основателем стартапа', img:'https://picsum.photos/id/342/700/900'},
-  {cat:'events', label:'Мероприятия', title:'Съёмка бизнес-форума', img:'https://picsum.photos/id/366/700/900'},
-  {cat:'business', label:'Бизнес', title:'Продуктовая съёмка — косметика', img:'https://picsum.photos/id/396/700/900'},
-  {cat:'ads', label:'Реклама', title:'Рекламный ролик — автосалон', img:'https://picsum.photos/id/453/700/900'},
-  {cat:'reels', label:'Reels', title:'Reels — ресторан премиум-класса', img:'https://picsum.photos/id/488/700/900'},
-  {cat:'events', label:'Мероприятия', title:'Корпоративное мероприятие', img:'https://picsum.photos/id/533/700/900'},
+  {cat: 'business', label: 'Reels', title: 'Reels для бренда balabala', img: 'bb.png', video: 'bb.mp4' },
+  {cat:'ads', label:'Реклама', title:'Рекламное видео для SMAN', img: 'sman.png', video: 'sman.mp4'},
+  {cat:'reels', label:'Reels', title:'Reels для allur', img: 'gg.png', video: 'gg.mp4'},
+  {cat:'interview', label:'Reels', title:'Reels для бренда balabala',img: 'bbtar.png', video: 'bbtar.mp4'},
+  {cat:'reels', label:'Reels', title:'Reels для geely galaxy', img: 'ggc.png', video: 'ggc.mp4'},
+  {cat:'business', label:'Реклама', title:'Рекламный ролик для balabala', img: 'bb1.png', video: 'bb1.mp4'},
+  {cat:'ads', label:'Реклама', title:'Рекламный ролик для nutribullet', img: 'nut.png', video: 'nut.mp4'},
+  {cat:'reels', label:'Reels', title:'Reels ролик для SMAN', img: 'sm.png', video: 'sm.mp4'},
+  {cat:'events', label:'Мероприятия', title:'Мероприятие для alloff', img: 'iv.png'},
 ];
 
 const grid = document.getElementById('portfolioGrid');
 works.forEach(w=>{
   const el = document.createElement('div');
   el.className = 'p-item';
-  el.dataset.cat = w.cat;
+  el.dataset.label = w.label;
   el.innerHTML = `
     <img src="${w.img}" alt="${w.title}">
     <div class="play">▶</div>
@@ -780,21 +778,34 @@ filterBtns.forEach(btn=>{
     btn.classList.add('active');
     const f = btn.dataset.filter;
     document.querySelectorAll('.p-item').forEach(item=>{
-      item.classList.toggle('hide', f!=='all' && item.dataset.cat!==f);
+      item.classList.toggle('hide', f!=='all' && item.dataset.label!==f);
     });
   });
 });
 
-/* modal (placeholder — replace video src with real reels) */
+/* modal — теперь реально проигрывает видео, если оно указано у работы */
 const modal = document.getElementById('videoModal');
 const modalVideo = document.getElementById('modalVideo');
 function openModal(w){
   modal.classList.add('open');
   modalVideo.poster = w.img;
+  if(w.video){
+    modalVideo.src = w.video;
+    modalVideo.muted = false;
+    modalVideo.play().catch(()=>{ /* браузер может блокировать автоплей со звуком — пользователь нажмёт play сам */ });
+  } else {
+    modalVideo.removeAttribute('src');
+    modalVideo.load();
+  }
 }
 document.getElementById('modalClose').addEventListener('click', closeModal);
 modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
-function closeModal(){ modal.classList.remove('open'); modalVideo.pause(); }
+function closeModal(){
+  modal.classList.remove('open');
+  modalVideo.pause();
+  modalVideo.removeAttribute('src');
+  modalVideo.load();
+}
 
 /* ---------- reveal on scroll ---------- */
 const revealEls = document.querySelectorAll('.reveal');
@@ -817,8 +828,8 @@ window.addEventListener('load', ()=>{
 
 /* hero video fallback: hide <video> if no source loads */
 const heroVideo = document.getElementById('heroVideo');
-if(!heroVideo.currentSrc){ heroVideo.style.display='none'; }
 heroVideo.addEventListener('error', ()=> heroVideo.style.display='none');
+heroVideo.addEventListener('loadeddata', ()=> heroVideo.style.display='block');
 
 /* ---------- counters ---------- */
 const counters = document.querySelectorAll('.js-counter');
@@ -906,7 +917,7 @@ document.querySelectorAll('.s-card').forEach(card=>{
 
 /* ---------- Google Sheets ---------- */
 
-const scriptURL = "https://script.google.com/macros/s/AKfycbz7ckKYXAuDhaWSGaeREhXJgxJ_Y3Kv7ib7-T-Iy4fuB4VL3QTSp95LpcCYe3sMgMdD/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbxAYqy3fdp_UaaIkJ5NC0H9yinzanLtcCGwpDxIqz1QcrPttzd9V_Y7YCzN71ubPGIZlQ/exec";
 
 document.getElementById("leadForm").addEventListener("submit", function(e){
 
