@@ -278,40 +278,26 @@ section{position:relative;padding:140px 0;}
 .about-collage:hover .ac1{transform:translateY(-6px);}
 .about-collage:hover .ac2{transform:translateY(6px);}
 
-/* ============ SERVICES ============ */
-.services-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--line);border-left:1px solid var(--line);
-}
-@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.services-grid{grid-template-columns:1fr;}}
-.s-card{
-  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
-  padding:36px 30px;min-height:150px;
-  display:flex;flex-direction:column;justify-content:space-between;
-  transition:background .4s var(--ease-soft);
-  position:relative;overflow:hidden;
-}
-.s-card::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(27,73,101,0.2), transparent 60%);
-  opacity:0;transition:opacity .4s;
-}
-.s-card:hover::before{opacity:1;}
-.s-card:hover{background:var(--surface);}
-.s-card .n{font-family:var(--f-mono);font-weight:400;font-size:12px;color:var(--ink-faint);}
-.s-card h3{font-size:19px;font-weight:400;font-family:var(--f-body);margin-top:26px;letter-spacing:-0.01em;}
-.services-note{margin-top:36px;color:var(--ink-dim);font-size:15px;font-family:var(--f-mono);font-weight:400;}
-.services-note strong{color:var(--ink);font-weight:400;font-family:var(--f-body);}
-
-/* ============ WHY ============ */
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
-@media(max-width:900px){.why-grid{grid-template-columns:1fr;}}
-.why-card{background:var(--black);padding:52px 40px;min-height:320px;display:flex;flex-direction:column;justify-content:space-between;transition:background .5s;}
+/* ============ WHY (accordion blocks) ============ */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr;}}
+.why-card{background:var(--black);transition:background .5s;}
 .why-card:hover{background:var(--black-soft);}
-.why-card .tc{font-family:var(--f-mono);font-weight:400;font-size:13px;color:var(--gold);}
-.why-card h3{font-size:26px;margin:28px 0 14px;}
-.why-card p{color:var(--ink-dim);font-size:15.5px;line-height:1.6;}
+.why-card-head{
+  padding:30px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  cursor:pointer;user-select:none;
+}
+.why-card-head h3{font-size:21px;font-weight:400;letter-spacing:-0.005em;}
+.why-card-head .plus-icon{
+  width:30px;height:30px;flex-shrink:0;border-radius:50%;border:1px solid var(--line-hi);
+  display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--gold);
+  transition:transform .4s var(--ease-soft), border-color .3s;
+}
+.why-card:hover .plus-icon{border-color:var(--gold-dim);}
+.why-card.open .plus-icon{transform:rotate(135deg);}
+.why-card-body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease-soft);}
+.why-card.open .why-card-body{max-height:260px;}
+.why-card-body p{color:var(--ink-dim);font-size:15.5px;line-height:1.6;padding:0 36px 30px;}
 
 /* ============ STATS ============ */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;}
@@ -358,7 +344,6 @@ section{position:relative;padding:140px 0;}
   .p-item .title{transform:translateY(0);opacity:1;}
   .p-item .play{opacity:1;transform:scale(1);}
   .p-item .overlay{background:linear-gradient(180deg, transparent 20%, rgba(5,5,23,0.9) 100%);}
-  .s-card::before{display:none;}
 }
 
 /* modal */
@@ -386,6 +371,26 @@ section{position:relative;padding:140px 0;}
 @media(max-width:768px){.bs-gallery{grid-template-columns:repeat(3,1fr);}}
 .bs-gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:4px;filter:grayscale(0.2) brightness(0.9);transition:filter .4s, transform .4s;}
 .bs-gallery img:hover{filter:grayscale(0) brightness(1);transform:translateY(-4px);}
+.team-member{display:flex;flex-direction:column;gap:10px;}
+.team-name{font-family:var(--f-mono);font-weight:400;font-size:13px;color:var(--ink);letter-spacing:.02em;display:flex;flex-direction:column;gap:2px;}
+.team-name em{font-style:normal;font-size:11px;color:var(--ink-dim);}
+
+/* ============ FOUNDERS ============ */
+.founders{margin-top:64px;padding-top:48px;border-top:1px solid var(--line);}
+.founders-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;}
+@media(max-width:768px){.founders-grid{grid-template-columns:1fr;}}
+.founder-card{display:flex;gap:24px;align-items:flex-start;}
+.founder-card img{width:96px;height:96px;border-radius:6px;object-fit:cover;flex-shrink:0;}
+@media(max-width:480px){.founder-card{gap:16px;}.founder-card img{width:76px;height:76px;}}
+.founder-name{font-family:var(--f-display);font-size:20px;letter-spacing:0.01em;text-transform:uppercase;}
+.founder-role{font-family:var(--f-mono);font-size:12px;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-top:4px;}
+.founder-bio{color:var(--ink-dim);font-size:15px;line-height:1.6;margin-top:12px;}
+
+/* ============ ROLES LIST ============ */
+.roles-list{margin-top:48px;}
+.roles-label{font-family:var(--f-mono);font-weight:400;font-size:12px;color:var(--ink-faint);letter-spacing:.08em;text-transform:uppercase;}
+.roles-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+.roles-tags span{font-size:14px;color:var(--ink-dim);border:1px solid var(--line-hi);border-radius:100px;padding:8px 18px;}
 
 /* ============ TESTIMONIALS ============ */
 .testi-wrap{position:relative;max-width:760px;}
@@ -458,7 +463,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     <a href="#top" class="logo"><span class="dot"></span>THE STATE ATELIER</a>
     <nav class="links">
       <a href="#about">О нас</a>
-      <a href="#services">Услуги</a>
       <a href="#work">Работы</a>
       <a href="#reviews">Отзывы</a>
       <a href="#contact">Контакты</a>
@@ -474,7 +478,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
 <div id="mobileMenu" class="glass" style="position:fixed;inset:0;z-index:850;display:none;flex-direction:column;justify-content:center;padding:40px;">
   <nav style="display:flex;flex-direction:column;gap:28px;font-size:32px;font-family:var(--f-display);font-weight:400;">
     <a href="#about">О нас</a>
-    <a href="#services">Услуги</a>
     <a href="#work">Работы</a>
     <a href="#reviews">Отзывы</a>
     <a href="#contact">Контакты</a>
@@ -507,48 +510,55 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     <div class="scrolldown"><span>SCROLL</span><span class="line"></span></div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="wrap about">
-      <div class="about-text reveal">
-        <div class="eyebrow">О команде</div>
-        <p>Мы — команда, которая помогает бизнесу выделяться с помощью сильного визуального контента.</p>
-        <p>Берём на себя весь процесс: от идеи и сценария до съёмки, монтажа, публикации и сопровождения социальных сетей.</p>
-        <p class="dim">Работаем быстро. Думаем как маркетологи. Снимаем как кино.</p>
-      </div>
-      <div class="about-collage reveal">
-        <img class="ac1" src="бек.jpeg" alt="Команда на съёмке">
-        <img class="ac2" src="бек1.png">
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
+  <!-- ABOUT / TEAM (merged: команда + backstage) -->
+  <section id="about" class="backstage">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="tc-num">00:01</span>
-        <h2 style="margin-top:14px;">Чем мы занимаемся</h2>
+        <div class="eyebrow" style="margin-top:14px;">О команде</div>
+        <h2>За каждым сильным кадром стоит сильная команда</h2>
+        <p>Мы объединяем креативную и операционную часть, чтобы маркетинг вашей компании плотно работал на продажи.</p>
       </div>
-    </div>
-    <div class="wrap" style="padding:0;">
-      <div class="services-grid">
-        <div class="s-card"><span class="n">01</span><h3>Коммерческий продакшн</h3></div>
-        <div class="s-card"><span class="n">02</span><h3>Маркетинг</h3></div>
-        <div class="s-card"><span class="n">03</span><h3>Работа с инфлюенсерами</h3></div>
-        <div class="s-card"><span class="n">04</span><h3>Менеджмент соцсетей</h3></div>
-        <div class="s-card"><span class="n">05</span><h3>Пиар</h3></div>
-        <div class="s-card"><span class="n">06</span><h3>Коллаборации с другими компаниями</h3></div>
-        <div class="s-card"><span class="n">07</span><h3>ИИ дизайн</h3></div>
-        <div class="s-card"><span class="n">08</span><h3>Таргет</h3></div>
-        <div class="s-card"><span class="n">09</span><h3>Промоакции и организация и проведение</h3></div>
-        <div class="s-card"><span class="n">10</span><h3>Мероприятие под ключ от 50 до 300 человек</h3></div>
-        <div class="s-card"><span class="n">11</span><h3>Брендинг</h3></div>
-        <div class="s-card"><span class="n">12</span><h3>Интервью</h3></div>
+
+      <div class="bs-media reveal">
+        <img src="back.PNG" alt="Backstage съёмки">
+        <div class="cap">BACKSTAGE — ON SET</div>
       </div>
-    </div>
-    <div class="wrap">
-      <p class="services-note reveal">Возможны как <strong>разовые проекты</strong>, так и <strong>долгосрочное сопровождение бизнеса</strong>.</p>
+
+      <div class="bs-gallery reveal">
+        <div class="team-member"><img src="ad.jpeg" alt="Адель"><span class="team-name">Адель<em>Креативный директор</em></span></div>
+        <div class="team-member"><img src="mil.jpeg" alt="Милана"><span class="team-name">Милана<em>Операционный директорр</em></span></div>
+        <div class="team-member"><img src="lila.jpeg" alt="Алила"><span class="team-name">Алила<em>ИИ-дизайнер</em></span></div>
+        <div class="team-member"><img src="dau.jpeg" alt="Даурен"><span class="team-name">Даурен<em>Видеограф</em></span></div>
+        <div class="team-member"><img src="muk.jpeg" alt="Мухаметжан"><span class="team-name">Мухаметжан<em>Монтажёр</em></span></div>
+      </div>
+
+      <!-- FOUNDERS -->
+      <div class="founders reveal">
+        <span class="tc">00:00:16:00</span>
+        <h3 style="margin:16px 0 32px;font-size:22px;">Основатели</h3>
+        <div class="founders-grid">
+          <div class="founder-card">
+            <img src="ad.jpeg" alt="Адель">
+            <div>
+              <div class="founder-name">Адель</div>
+              <div class="founder-role">Со-основатель</div>
+              <p class="founder-bio">опыт Адель</p>
+            </div>
+          </div>
+          <div class="founder-card">
+            <img src="mil.jpeg" alt="Милана">
+            <div>
+              <div class="founder-name">Милана</div>
+              <div class="founder-role">Со-основатель</div>
+              <p class="founder-bio">опыт Миланы </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      </div>
     </div>
   </section>
 
@@ -562,9 +572,26 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     </div>
     <div class="wrap" style="padding:0;">
       <div class="why-grid">
-        <div class="why-card reveal"><span class="tc">00:00:04:00</span><div><h3>Скорость</h3><p>Работаем собственной командой без посредников — от утверждения до готового видео 3 дня.</p></div></div>
-        <div class="why-card reveal"><span class="tc">00:00:08:00</span><div><h3>Полный цикл</h3><p>От идеи до готового результата: сценарий, съёмка, монтаж, публикация — всё в одних руках.</p></div></div>
-        <div class="why-card reveal"><span class="tc">00:00:12:00</span><div><h3>Маркетинг, который приносит результат</h3><p>Создаём не просто красивые видео, а контент, который помогает продавать и вызывать доверие.</p></div></div>
+        <div class="why-card reveal">
+          <div class="why-card-head"><h3>Полный цикл</h3><span class="plus-icon">+</span></div>
+          <div class="why-card-body"><p>Стратегия, продакшн, реклама, PR, дизайн и ивенты — без сборки команды из десяти разных подрядчиков. Один партнёр отвечает за результат от идеи до цифр в отчёте.</p></div>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-card-head"><h3>Начинаем с диагностики</h3><span class="plus-icon">+</span></div>
+          <div class="why-card-body"><p>Каждый проект стартует с разбора: что мешает бренду расти сейчас. Стратегия, цели и KPI формируются для решения задачи.</p></div>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-card-head"><h3>Работаем на результат</h3><span class="plus-icon">+</span></div>
+          <div class="why-card-body"><p>Мы работаем с метриками, которые прямо отражаются на деньгах в кассе.</p></div>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-card-head"><h3>Опыт в разных нишах</h3><span class="plus-icon">+</span></div>
+          <div class="why-card-body"><p>Авто, бьюти, HoReCa, ритейл, цветочные магазины — в каждой нише свои триггеры покупки. Наша насмотренность помогает креативно решать задачи любого бизнеса.</p></div>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-card-head"><h3>Контакт с брендом</h3><span class="plus-icon">+</span></div>
+          <div class="why-card-body"><p>Стратег, продакшн, таргетолог и PR-менеджер работают с брендом системно.</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -573,8 +600,8 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
   <section>
     <div class="wrap">
       <div class="stats-grid">
-        <div class="stat reveal"><div class="num"><span class="js-counter" data-target="30">0</span><span class="plus">+</span></div><div class="label">реализованных проектов</div></div>
         <div class="stat reveal"><div class="num"><span class="js-counter" data-target="15">0</span><span class="plus">+</span></div><div class="label">лет опыта</div></div>
+        <div class="stat reveal"><div class="num"><span class="js-counter" data-target="30">0</span><span class="plus">+</span></div><div class="label">реализованных проектов</div></div>
         <div class="stat reveal"><div class="num"><span class="js-counter" data-target="1000">0</span><span class="plus">+</span></div><div class="label">смонтированных роликов</div></div>
       </div>
     </div>
@@ -591,11 +618,12 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
       <div class="filters reveal">
 
         <button class="filter-btn active" data-filter="all">Все</button>
-        <button class="filter-btn" data-filter="Реклама">Реклама</button>
-        <button class="filter-btn" data-filter="Бизнес">Бизнес</button>
         <button class="filter-btn" data-filter="Reels">Reels</button>
-        <button class="filter-btn" data-filter="Интервью">Интервью</button>
+        <button class="filter-btn" data-filter="Коммерческая съемка">Коммерческая съемка</button>
+        <button class="filter-btn" data-filter="SMM">SMM</button>
+        <button class="filter-btn" data-filter="Стратегия">Стратегия</button>
         <button class="filter-btn" data-filter="Мероприятия">Мероприятия</button>
+        <button class="filter-btn" data-filter="Промо-акции">Промо-акции</button>
       </div>
     </div>
     <div class="wrap" style="padding:0;">
@@ -604,32 +632,11 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     </div>
   </section>
 
-  <!-- BACKSTAGE -->
-  <section class="backstage">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="tc-num">00:04</span>
-        <h2 style="margin-top:14px;">За каждым сильным кадром стоит сильная команда.</h2>
-      </div>
-      <div class="bs-media reveal">
-        <img src="back.PNG" alt="Backstage съёмки">
-        <div class="cap">BACKSTAGE — ON SET</div>
-      </div>
-      <div class="bs-gallery reveal">
-        <img src="mil.jpeg" alt=" ">
-        <img src="ad.jpeg" alt="">
-        <img src="lila.jpeg" alt="">
-        <img src="dau.jpeg" alt="">
-        <img src="muk.jpeg" alt="">
-      </div>
-    </div>
-  </section>
-
   <!-- TESTIMONIALS -->
   <section id="reviews">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="tc-num">00:05</span>
+        <span class="tc-num">00:04</span>
         <h2 style="margin-top:14px;">Отзывы</h2>
       </div>
       <div class="testi-wrap reveal">
@@ -658,8 +665,8 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
   <section id="contact" class="final">
     <div class="wrap final-inner">
       <div class="reveal">
-        <span class="tc-num">00:06</span>
-        <h2 style="margin-top:14px;">Готовы вывести контент вашего бизнеса на новый уровень?</h2>
+        <span class="tc-num">00:05</span>
+        <h2 style="margin-top:14px;">Давайте обсудим ваш проект</h2>
         <div class="final-actions">
           <a href="#contact" class="btn btn-primary">Оставить заявку <span class="arrow">→</span></a>
           <a href="https://wa.me/77075699669" class="btn btn-ghost">Обсудить в WhatsApp</a>
@@ -714,7 +721,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
         <div class="foot-col">
           <h4>Меню</h4>
           <a href="#about">О нас</a>
-          <a href="#services">Услуги</a>
           <a href="#work">Работы</a>
           <a href="#reviews">Отзывы</a>
         </div>
@@ -906,12 +912,10 @@ mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
   menuOpen=false; mobileMenu.style.display='none';
 }));
 
-/* ---------- service card mouse-follow glow ---------- */
-document.querySelectorAll('.s-card').forEach(card=>{
-  card.addEventListener('mousemove', e=>{
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--mx', (e.clientX-r.left)+'px');
-    card.style.setProperty('--my', (e.clientY-r.top)+'px');
+/* ---------- WHY accordion ---------- */
+document.querySelectorAll('.why-card-head').forEach(head=>{
+  head.addEventListener('click', ()=>{
+    head.closest('.why-card').classList.toggle('open');
   });
 });
 
