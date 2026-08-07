@@ -14,21 +14,21 @@
 <style>
 /* ============ TOKENS ============ */
 :root{
-  --black: #ffeda8;
-  --black-soft: #f7e49e;
-  --surface: #f7e49e;
-  --surface-hi: #eedb94;
-  --line: rgba(116,7,14,0.14);
-  --line-hi: rgba(116,7,14,0.28);
-  --ink: #74070e;
-  --ink-dim: #74070e;
-  --ink-faint: #74070e;
+  --black: #ececec;
+  --black-soft: #e4e4e4;
+  --surface: #e9e9e9;
+  --surface-hi: #dedede;
+  --line: rgba(0,0,0,0.12);
+  --line-hi: rgba(0,0,0,0.26);
+  --ink: #000000;
+  --ink-dim: #2b2b2b;
+  --ink-faint: #4a4a4a;
 
-  /* Акцент: Глубокий Кобальт */
-  --gold: #1b4965;
-  --gold-dim: rgba(27, 73, 101, 0.4);
+  /* Акцент */
+  --gold: #85bb65;
+  --gold-dim: rgba(133, 187, 101, 0.4);
 
-  --steel: #ffeda8;
+  --steel: #ececec;
 
   --f-display: 'Gill Sans', sans-serif;
   --f-body: 'Gill Sans', sans-serif;
@@ -46,7 +46,7 @@ button, a{touch-action:manipulation;}
   *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
 }
 body{
-  background:var(--black);
+  background:linear-gradient(160deg, #f5f5f5 0%, #ececec 45%, #e0e0e0 100%);
   color:var(--ink);
   font-family:var(--f-body);
   font-weight:400;
@@ -58,7 +58,7 @@ body{
 img{display:block;max-width:100%;}
 a{color:inherit;text-decoration:none;}
 button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit;}
-::selection{background:var(--gold);color:#ffeda8;}
+::selection{background:var(--gold);color:#ffffff;}
 
 .wrap{max-width:1360px;margin:0 auto;padding:0 40px;}
 @media (max-width:768px){.wrap{padding:0 22px;}}
@@ -80,13 +80,13 @@ h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:0.01em;text
 /* ============ SCRUBBER (signature element) ============ */
 #scrubber{
   position:fixed;top:0;left:0;width:100%;height:3px;
-  background:rgba(116,7,14,0.08);
+  background:rgba(0,0,0,0.08);
   z-index:900;
 }
 #scrubber .fill{
   position:absolute;top:0;left:0;height:100%;
   width:0%;
-  background:linear-gradient(90deg,var(--gold),#2b6284);
+  background:linear-gradient(90deg,var(--gold),#5c8f45);
   transition:width .05s linear;
 }
 #scrubber .playhead{
@@ -122,7 +122,7 @@ header .wrap{
   border-bottom:1px solid transparent;
   transition:border-color .4s var(--ease-soft);
 }
-header.scrolled{background:rgba(255, 237, 168, 0.85);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);}
+header.scrolled{background:rgba(240, 240, 240, 0.85);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);}
 header.scrolled .wrap{border-bottom-color:var(--line);}
 .logo{
   font-family:var(--f-display);font-weight:400;font-size:20px;letter-spacing:0.01em;
@@ -174,9 +174,9 @@ nav.links a:hover::after{width:100%;}
 }
 .hero-media .fallback{
   background:
-    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(27,73,101,0.25), transparent 60%),
-    radial-gradient(ellipse 70% 60% at 85% 75%, rgba(116,7,14,0.12), transparent 60%),
-    linear-gradient(160deg, #f7e49e 0%, #ffeda8 45%, #eedb94 100%);
+    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(133,187,101,0.22), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 85% 75%, rgba(0,0,0,0.08), transparent 60%),
+    linear-gradient(160deg, #f5f5f5 0%, #ececec 45%, #dedede 100%);
   animation:drift 22s ease-in-out infinite alternate;
 }
 @keyframes drift{
@@ -186,10 +186,10 @@ nav.links a:hover::after{width:100%;}
 .grain{position:absolute;inset:0;opacity:.05;pointer-events:none;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-/* Переход от медиа к жёлтому фону страницы */
+/* Переход от медиа к светло-серому фону страницы */
 .hero-media::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(255,237,168,0.1) 0%, rgba(255,237,168,0.3) 40%, rgba(255,237,168,0.96) 100%);
+  background:linear-gradient(180deg, rgba(236,236,236,0.1) 0%, rgba(236,236,236,0.3) 40%, rgba(236,236,236,0.96) 100%);
 }
 .hero-content{position:relative;z-index:2;padding:0 0 64px;}
 .hero-content .wrap{}
@@ -270,7 +270,7 @@ section{position:relative;padding:140px 0;}
 @media(max-width:480px){.about-collage{height:320px;}.about-text p{font-size:17px;}}
 .about-collage img{
   position:absolute;object-fit:cover;border-radius:6px;
-  box-shadow:0 30px 60px -20px rgba(116,7,14,0.25);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,0.25);
 }
 .ac1{width:62%;height:78%;top:0;left:0;z-index:2;}
 .ac2{width:48%;height:52%;bottom:0;right:0;z-index:1;border:1px solid var(--line-hi);}
@@ -330,7 +330,7 @@ section{position:relative;padding:140px 0;}
   position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;
   background:linear-gradient(180deg, transparent 30%, rgba(5, 5, 23, 0.85) 100%);
 }
-.p-item .cat{font-family:var(--f-mono);font-weight:400;font-size:11px;color:#f7e49e;letter-spacing:.08em;text-transform:uppercase;}
+.p-item .cat{font-family:var(--f-mono);font-weight:400;font-size:11px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;}
 .p-item .title{font-size:17px;font-weight:400;margin-top:6px;color:#ffffff;transform:translateY(8px);opacity:0.9;transition:transform .4s var(--ease),opacity .4s;}
 .p-item:hover .title{transform:translateY(0);opacity:1;}
 .p-item .play{
@@ -351,7 +351,7 @@ section{position:relative;padding:140px 0;}
 .modal.open{display:flex;}
 .modal-inner{position:relative;box-shadow:0 40px 100px -30px rgba(0,0,0,0.8);}
 .modal-inner video{display:block;max-width:92vw;max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:4px;background:#000;}
-.modal-close{position:absolute;top:-46px;right:0;font-family:var(--f-mono);font-weight:400;font-size:13px;color:#ffeda8;display:flex;align-items:center;gap:8px;}
+.modal-close{position:absolute;top:-46px;right:0;font-family:var(--f-mono);font-weight:400;font-size:13px;color:#e0e0e0;display:flex;align-items:center;gap:8px;}
 .modal-close:hover{color:var(--gold);}
 
 /* ============ BACKSTAGE ============ */
@@ -450,7 +450,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
   background:rgba(247, 228, 158, 0.65);
   backdrop-filter:blur(18px) saturate(160%);
   -webkit-backdrop-filter:blur(18px) saturate(160%);
-  border:1px solid rgba(116,7,14,0.12);
+  border:1px solid rgba(0,0,0,0.12);
 }
 </style>
 </head>
@@ -620,10 +620,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
         <button class="filter-btn active" data-filter="all">Все</button>
         <button class="filter-btn" data-filter="Reels">Reels</button>
         <button class="filter-btn" data-filter="Коммерческая съемка">Коммерческая съемка</button>
-        <button class="filter-btn" data-filter="SMM">SMM</button>
-        <button class="filter-btn" data-filter="Стратегия">Стратегия</button>
         <button class="filter-btn" data-filter="Мероприятия">Мероприятия</button>
-        <button class="filter-btn" data-filter="Промо-акции">Промо-акции</button>
       </div>
     </div>
     <div class="wrap" style="padding:0;">
@@ -752,15 +749,16 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
 <script>
 /* ---------- DATA: portfolio ---------- */
 const works = [
-  {cat: 'business', label: 'Reels', title: 'Reels для бренда balabala', img: 'bb.png', video: 'bb.mp4' },
-  {cat:'ads', label:'Реклама', title:'Рекламное видео для SMAN', img: 'sman.png', video: 'sman.mp4'},
-  {cat:'reels', label:'Reels', title:'Reels для allur', img: 'gg.png', video: 'gg.mp4'},
-  {cat:'interview', label:'Reels', title:'Reels для бренда balabala',img: 'bbtar.png', video: 'bbtar.mp4'},
-  {cat:'reels', label:'Reels', title:'Reels для geely galaxy', img: 'ggc.png', video: 'ggc.mp4'},
-  {cat:'business', label:'Реклама', title:'Рекламный ролик для balabala', img: 'bb1.png', video: 'bb1.mp4'},
-  {cat:'ads', label:'Реклама', title:'Рекламный ролик для nutribullet', img: 'nut.png', video: 'nut.mp4'},
-  {cat:'reels', label:'Reels', title:'Reels ролик для SMAN', img: 'sm.png', video: 'sm.mp4'},
-  {cat:'events', label:'Мероприятия', title:'Мероприятие для alloff', img: 'iv.png'},
+  {cat: 'business', label: 'Коммерческая съемка', title: 'Коммерческая съёмка', img: 'kom1.png', video: 'kom1.mp4' },
+  {cat:'ads', label:'Reels', title: 'Reels', img: 'r1.png', video: 'r1.mp4'},
+  {cat:'reels', label:'Reels', title: 'Reels', img: 'r2.png', video: 'r2.mp4'},
+  {cat:'reels', label:'Reels', title: 'Reels', img: 'r3.png', video: 'r3.mp4'},
+  {cat:'interview', label:'Коммерческая съемка', title: 'Коммерческая съёмка', img: 'kom2.png', video: 'kom2.mp4'},
+  {cat:'reels', label:'Reels', title: 'Reels', img: 'r4.png', video: 'r4.mp4'},
+  {cat:'business', label:'Коммерческая съемка', title: 'Коммерческая съёмка', img: 'kom3.png', video: 'kom3.mp4'},
+  {cat:'ads', label:'Коммерческая съемка', title: 'Коммерческая съёмка', img: 'kom4.png', video: 'kom4.mp4'},
+  {cat:'reels', label:'Reels', title: 'Reels', img: 'r5.png', video: 'r5.mp4'},
+  {cat:'events', label:'Мероприятия', title: 'Мероприятие', img: 'iv.png'},
 ];
 
 const grid = document.getElementById('portfolioGrid');
