@@ -186,10 +186,15 @@ nav.links a:hover::after{width:100%;}
 .grain{position:absolute;inset:0;opacity:.05;pointer-events:none;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-/* Переход от медиа к светло-серому фону страницы */
+/* Затемнение видео + плавный переход в светло-серый фон страницы */
 .hero-media::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(236,236,236,0.1) 0%, rgba(236,236,236,0.3) 40%, rgba(236,236,236,0.96) 100%);
+  background:linear-gradient(180deg,
+    rgba(0,0,0,0.45) 0%,
+    rgba(0,0,0,0.32) 30%,
+    rgba(10,10,10,0.5) 60%,
+    rgba(236,236,236,0.55) 82%,
+    rgba(236,236,236,0.98) 100%);
 }
 .hero-content{position:relative;z-index:2;padding:0 0 64px;}
 .hero-content .wrap{}
@@ -308,13 +313,6 @@ section{position:relative;padding:140px 0;}
 .stat .label{color:var(--ink-dim);font-size:14px;margin-top:8px;}
 
 /* ============ PORTFOLIO ============ */
-.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;}
-.filter-btn{
-  font-size:13px;padding:9px 18px;border-radius:100px;border:1px solid var(--line-hi);
-  color:var(--ink-dim);transition:all .3s var(--ease-soft);
-}
-.filter-btn:hover{color:var(--ink);border-color:var(--ink-dim);}
-.filter-btn.active{background:var(--ink);color:var(--black);border-color:var(--ink);}
 .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
 @media(max-width:900px){.portfolio-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.portfolio-grid{grid-template-columns:1fr;}}
@@ -325,25 +323,14 @@ section{position:relative;padding:140px 0;}
 .p-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);filter:saturate(0.95) brightness(0.95);}
 .p-item:hover img{transform:scale(1.06);filter:saturate(1) brightness(0.85);}
 
-/* ТЁМНЫЙ ГРАДИЕНТ НА КАРТОЧКАХ ПОРТФОЛИО */
-.p-item .overlay{
-  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;
-  background:linear-gradient(180deg, transparent 30%, rgba(5, 5, 23, 0.85) 100%);
-}
-.p-item .cat{font-family:var(--f-mono);font-weight:400;font-size:11px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;}
-.p-item .title{font-size:17px;font-weight:400;margin-top:6px;color:#ffffff;transform:translateY(8px);opacity:0.9;transition:transform .4s var(--ease),opacity .4s;}
-.p-item:hover .title{transform:translateY(0);opacity:1;}
 .p-item .play{
   position:absolute;top:22px;right:22px;width:38px;height:38px;border-radius:50%;
   border:1px solid rgba(255,255,255,0.6);color:#ffffff;background:rgba(5,5,23,0.3);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;
   opacity:0;transform:scale(0.8);transition:all .35s var(--ease);
 }
 .p-item:hover .play{opacity:1;transform:scale(1);}
-.p-item.hide{display:none;}
 @media (hover:none){
-  .p-item .title{transform:translateY(0);opacity:1;}
   .p-item .play{opacity:1;transform:scale(1);}
-  .p-item .overlay{background:linear-gradient(180deg, transparent 20%, rgba(5,5,23,0.9) 100%);}
 }
 
 /* modal */
@@ -375,16 +362,28 @@ section{position:relative;padding:140px 0;}
 .team-name{font-family:var(--f-mono);font-weight:400;font-size:13px;color:var(--ink);letter-spacing:.02em;display:flex;flex-direction:column;gap:2px;}
 .team-name em{font-style:normal;font-size:11px;color:var(--ink-dim);}
 
-/* ============ FOUNDERS ============ */
-.founders{margin-top:64px;padding-top:48px;border-top:1px solid var(--line);}
-.founders-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;}
-@media(max-width:768px){.founders-grid{grid-template-columns:1fr;}}
-.founder-card{display:flex;gap:24px;align-items:flex-start;}
-.founder-card img{width:96px;height:96px;border-radius:6px;object-fit:cover;flex-shrink:0;}
-@media(max-width:480px){.founder-card{gap:16px;}.founder-card img{width:76px;height:76px;}}
-.founder-name{font-family:var(--f-display);font-size:20px;letter-spacing:0.01em;text-transform:uppercase;}
-.founder-role{font-family:var(--f-mono);font-size:12px;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-top:4px;}
-.founder-bio{color:var(--ink-dim);font-size:15px;line-height:1.6;margin-top:12px;}
+/* ============ TRUSTED / НАМ ДОВЕРЯЮТ (невидимая сетка логотипов) ============ */
+.trusted-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:transparent;
+  border:none;
+}
+@media(max-width:768px){.trusted-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:480px){.trusted-grid{grid-template-columns:repeat(2,1fr);}}
+.trusted-item{
+  display:flex;align-items:center;justify-content:center;
+  height:96px;
+  background:transparent;border:none;
+  padding:18px;
+}
+.trusted-item img{
+  max-width:100%;max-height:42px;width:auto;height:auto;object-fit:contain;
+  filter:grayscale(1) opacity(0.55);
+  transition:filter .4s var(--ease-soft), transform .4s var(--ease-soft), opacity .4s;
+}
+.trusted-item:hover img{filter:grayscale(0) opacity(1);transform:translateY(-2px);}
 
 /* ============ ROLES LIST ============ */
 .roles-list{margin-top:48px;}
@@ -432,7 +431,8 @@ section{position:relative;padding:140px 0;}
 }
 .form-group input:focus, .form-group textarea:focus{outline:none;border-color:var(--gold);}
 .form-group textarea{resize:none;height:70px;}
-.form-submit{margin-top:12px;width:100%;justify-content:center;}
+.form-submit{margin-top:12px;width:100%;justify-content:center;background:var(--gold);color:#ffffff;}
+.form-submit:hover{background:#6fa350;}
 .form-note{font-family:var(--f-mono);font-weight:400;font-size:12px;color:var(--ink-faint);margin-top:16px;}
 
 /* ============ FOOTER ============ */
@@ -450,6 +450,13 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
   background:rgba(247, 228, 158, 0.65);
   backdrop-filter:blur(18px) saturate(160%);
   -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border:1px solid rgba(0,0,0,0.12);
+}
+/* Серая панель для формы заявки — чуть темнее фона страницы */
+.form-panel{
+  background:rgba(208, 208, 208, 0.6);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
   border:1px solid rgba(0,0,0,0.12);
 }
 </style>
@@ -492,7 +499,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     <div class="hero-media">
       <video id="heroVideo" autoplay muted loop playsinline poster="">
         <!-- Замените src на файл реального шоурила клиента (mp4/webm) -->
-        <source src="hero.mp4" type="video/mp4">
+        <source src="background.mp4" type="video/mp4">
       </video>
       <div class="fallback"></div>
       <div class="grain"></div>
@@ -500,7 +507,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     <div class="hero-content">
       <div class="wrap">
         <h1 class="hero-title reveal">МЫ ФОРМИРУЕМ <br>ЖЕЛАНИЕ КУПИТЬ</h1>
-        <div class="hero-sub reveal"><span>Полный маркетинговый фундамент: стратегия, контент, <br>реклама, дизайн и сопровождение. От идеи до конверсии.</span></div>
+        <div class="hero-sub reveal"><span>Полный маркетинговый фундамент: стратегия, контент, <br>реклама, дизайн и сопровождение. От идеи до результата.</span></div>
         <div class="hero-actions reveal">
           <a href="#contact" class="btn btn-primary">Обсудить проект <span class="arrow">→</span></a>
           <a href="#work" class="btn btn-ghost">Наши работы</a>
@@ -522,42 +529,60 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
 
       <div class="bs-media reveal">
         <img src="back.PNG" alt="Backstage съёмки">
-        <div class="cap">BACKSTAGE — ON SET</div>
       </div>
 
       <div class="bs-gallery reveal">
-        <div class="team-member"><img src="ad.jpeg" alt="Адель"><span class="team-name">Адель<em>Креативный директор</em></span></div>
-        <div class="team-member"><img src="mil.jpeg" alt="Милана"><span class="team-name">Милана<em>Операционный директорр</em></span></div>
-        <div class="team-member"><img src="lila.jpeg" alt="Алила"><span class="team-name">Алила<em>ИИ-дизайнер</em></span></div>
-        <div class="team-member"><img src="dau.jpeg" alt="Даурен"><span class="team-name">Даурен<em>Видеограф</em></span></div>
-        <div class="team-member"><img src="muk.jpeg" alt="Мухаметжан"><span class="team-name">Мухаметжан<em>Монтажёр</em></span></div>
+        <div class="team-member"><img src="ad.jpeg"></div>
+        <div class="team-member"><img src="mil.jpeg" ></div>
+        <div class="team-member"><img src="lila.jpeg" ></div>
+        <div class="team-member"><img src="dau.jpeg" ></div>
+        <div class="team-member"><img src="muk.jpeg"></div>
       </div>
 
-      <!-- FOUNDERS -->
-      <div class="founders reveal">
-        <span class="tc">00:00:16:00</span>
-        <h3 style="margin:16px 0 32px;font-size:22px;">Основатели</h3>
-        <div class="founders-grid">
-          <div class="founder-card">
-            <img src="ad.jpeg" alt="Адель">
-            <div>
-              <div class="founder-name">Адель</div>
-              <div class="founder-role">Со-основатель</div>
-              <p class="founder-bio">опыт Адель</p>
-            </div>
-          </div>
-          <div class="founder-card">
-            <img src="mil.jpeg" alt="Милана">
-            <div>
-              <div class="founder-name">Милана</div>
-              <div class="founder-role">Со-основатель</div>
-              <p class="founder-bio">опыт Миланы </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+  </section>
 
-      
+  <!-- TRUSTED / НАМ ДОВЕРЯЮТ -->
+  <section id="trusted">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tc-num">00:02</span>
+        <h2 style="margin-top:14px;">Нам доверяют</h2>
+        <p>Бренды и компании, с которыми мы уже работали.</p>
+      </div>
+      <!-- Логотипы: замените src на PNG-файлы/ссылки логотипов клиентов (16 штук) -->
+      <div class="trusted-grid reveal">
+        <div class="trusted-item"><img src="logo1.png" alt="Логотип клиента 1"></div>
+        <div class="trusted-item"><img src="logo2.png" alt="Логотип клиента 2"></div>
+        <div class="trusted-item"><img src="logo3.png" alt="Логотип клиента 3"></div>
+        <div class="trusted-item"><img src="logo4.png" alt="Логотип клиента 4"></div>
+        <div class="trusted-item"><img src="logo5.png" alt="Логотип клиента 5"></div>
+        <div class="trusted-item"><img src="logo6.png" alt="Логотип клиента 6"></div>
+        <div class="trusted-item"><img src="logo7.png" alt="Логотип клиента 7"></div>
+        <div class="trusted-item"><img src="logo8.png" alt="Логотип клиента 8"></div>
+        <div class="trusted-item"><img src="logo9.png" alt="Логотип клиента 9"></div>
+        <div class="trusted-item"><img src="logo10.png" alt="Логотип клиента 10"></div>
+        <div class="trusted-item"><img src="logo11.png" alt="Логотип клиента 11"></div>
+        <div class="trusted-item"><img src="logo12.png" alt="Логотип клиента 12"></div>
+        <div class="trusted-item"><img src="logo13.png" alt="Логотип клиента 13"></div>
+        <div class="trusted-item"><img src="logo14.png" alt="Логотип клиента 14"></div>
+        <div class="trusted-item"><img src="logo15.png" alt="Логотип клиента 15"></div>
+        <div class="trusted-item"><img src="logo16.png" alt="Логотип клиента 16"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tc-num">00:03</span>
+        <h2 style="margin-top:14px;">Наши работы</h2>
+        <p>Каждый проект — отдельная история.</p>
+      </div>
+    </div>
+    <div class="wrap" style="padding:0;">
+      <div class="portfolio-grid" id="portfolioGrid">
       </div>
     </div>
   </section>
@@ -566,7 +591,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
   <section>
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="tc-num">00:02</span>
+        <span class="tc-num">00:04</span>
         <h2 style="margin-top:14px;">Почему мы</h2>
       </div>
     </div>
@@ -574,23 +599,23 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
       <div class="why-grid">
         <div class="why-card reveal">
           <div class="why-card-head"><h3>Полный цикл</h3><span class="plus-icon">+</span></div>
-          <div class="why-card-body"><p>Стратегия, продакшн, реклама, PR, дизайн и ивенты — без сборки команды из десяти разных подрядчиков. Один партнёр отвечает за результат от идеи до цифр в отчёте.</p></div>
+          <div class="why-card-body"><p>Мы соединяем стратегию, продакшн, рекламу, PR, дизайн и ивенты в одной команде, чтобы вам не пришлось управлять десятком подрядчиков, — вы ставите одну задачу, а мы делаем всё сами, без лишних согласований и распыления бюджета.</p></div>
         </div>
         <div class="why-card reveal">
           <div class="why-card-head"><h3>Начинаем с диагностики</h3><span class="plus-icon">+</span></div>
-          <div class="why-card-body"><p>Каждый проект стартует с разбора: что мешает бренду расти сейчас. Стратегия, цели и KPI формируются для решения задачи.</p></div>
+          <div class="why-card-body"><p>Мы не начинаем с креатива ради креатива. Сначала разбираемся, что именно тормозит ваш бренд прямо сейчас, - а уже под это подгоняем стратегию, цели и показатели, чтобы каждый шаг работал на результат, а не просто красиво выглядел.</p></div>
         </div>
         <div class="why-card reveal">
           <div class="why-card-head"><h3>Работаем на результат</h3><span class="plus-icon">+</span></div>
-          <div class="why-card-body"><p>Мы работаем с метриками, которые прямо отражаются на деньгах в кассе.</p></div>
+          <div class="why-card-body"><p>Мы берём ответственность за результат — от первой идеи до финального эффекта на вашем счёте. Поэтому мы не меряем успех лайками или охватами. Если мы взялись за проект, мы отвечаем за то, чтобы он окупился и принёс прибыль, а не просто «был красиво сделан».</p></div>
         </div>
         <div class="why-card reveal">
           <div class="why-card-head"><h3>Опыт в разных нишах</h3><span class="plus-icon">+</span></div>
-          <div class="why-card-body"><p>Авто, бьюти, HoReCa, ритейл, цветочные магазины — в каждой нише свои триггеры покупки. Наша насмотренность помогает креативно решать задачи любого бизнеса.</p></div>
+          <div class="why-card-body"><p>Мы работаем с автобизнесом, бьюти, HoReCa, ритейлом и цветочными магазинами - и знаем, что в каждой нише свои триггеры. То, что продаёт в ресторане, не сработает в автосалоне, а то, что цепляет в цветочном, провалится в бьюти. Наша насмотренность через разные категории помогает нам видеть свежие решения и не повторять чужих ошибок.</p></div>
         </div>
         <div class="why-card reveal">
           <div class="why-card-head"><h3>Контакт с брендом</h3><span class="plus-icon">+</span></div>
-          <div class="why-card-body"><p>Стратег, продакшн, таргетолог и PR-менеджер работают с брендом системно.</p></div>
+          <div class="why-card-body"><p>Мы всегда на связи - не для галочки, а чтобы вы чувствовали себя спокойно. Отвечаем быстро, держим в курсе каждого этапа, не заставляем ждать и не оставляем без ответа. Потому что контакт с брендом - это не только про коммуникацию с аудиторией, но и про честный диалог с вами.</p></div>
         </div>
       </div>
     </div>
@@ -607,47 +632,25 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
-  <section id="work">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="tc-num">00:03</span>
-        <h2 style="margin-top:14px;">Наши работы</h2>
-        <p>Каждый проект — отдельная история. Наведите курсор, чтобы увидеть превью.</p>
-      </div>
-      <div class="filters reveal">
-
-        <button class="filter-btn active" data-filter="all">Все</button>
-        <button class="filter-btn" data-filter="Reels">Reels</button>
-        <button class="filter-btn" data-filter="Коммерческая съемка">Коммерческая съемка</button>
-        <button class="filter-btn" data-filter="Мероприятия">Мероприятия</button>
-      </div>
-    </div>
-    <div class="wrap" style="padding:0;">
-      <div class="portfolio-grid" id="portfolioGrid">
-      </div>
-    </div>
-  </section>
-
   <!-- TESTIMONIALS -->
   <section id="reviews">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="tc-num">00:04</span>
+        <span class="tc-num">00:05</span>
         <h2 style="margin-top:14px;">Отзывы</h2>
       </div>
       <div class="testi-wrap reveal">
         <div class="testi-slide active">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Очень рады, что выбрали именно вас! Всегда были на связи, быстро отвечали и помогали с идеями. Видео получились классные, а после публикаций начали активно приходить новые подписчики.</p>
+          <p class="testi-quote">Долго искали команду, которой можно доверять без контроля. С The State Atelier мы это нашли. Услышали нас с полуслова, предложили идеи лучше наших, сделали в срок. Мы спокойны за свой контент и знаем: клиенты видят нас именно такими, как надо</p>
          </div>
         <div class="testi-slide">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Спасибо за такой подход к работе! Всё прошло легко и без лишних переживаний. Съёмка, монтаж - всё на уровне. Контент получился именно таким, как мы хотели.</p>
+          <p class="testi-quote">Я не специалист в маркетинге и не хочу вникать во все тонкости. Моя задача - чтобы бизнес работал, а клиенты приходили. Команда взяла на себя всё: от контента до ведения аккаунта. Мне не пришлось контролировать каждый шаг - просто дала доступ и забыла. Через пару недель коллеги по рынку заметили изменения и спрашивали, кто теперь работает с нашим брендом. Результат говорит сам за себя - теперь они тоже с вами. </p>
           </div>
         <div class="testi-slide">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Передали вам весь контент и вообще не пожалели. Не нужно было постоянно что-то контролировать - всё делалось вовремя и качественно. Аккаунт ожил, стало больше подписчиков и обращений.</p>
+          <p class="testi-quote">Передали вам всё сопровождение и ни разу не пожалели. Не нужно было дёргать, напоминать, перепроверять - вы сами всё делали чётко и в срок. Аккаунт реально ожил: появились новые подписчики, участились заявки. Чувствуется, что вы живёте проектом, а не просто отрабатываете заказ.</p>
         </div>
         <div class="testi-nav">
           <button class="testi-dot active" data-i="0"></button>
@@ -662,8 +665,8 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
   <section id="contact" class="final">
     <div class="wrap final-inner">
       <div class="reveal">
-        <span class="tc-num">00:05</span>
-        <h2 style="margin-top:14px;">Давайте обсудим ваш проект</h2>
+        <span class="tc-num">00:06</span>
+        <h2 style="margin-top:14px;">Нравится подход? Давайте работать</h2>
         <div class="final-actions">
           <a href="#contact" class="btn btn-primary">Оставить заявку <span class="arrow">→</span></a>
           <a href="https://wa.me/77075699669" class="btn btn-ghost">Обсудить в WhatsApp</a>
@@ -676,7 +679,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
           <a href="#">Алматы · Казахстан</a>
         </div>
       </div>
-  <form class="glass reveal" style="padding:44px;border-radius:8px;" id="leadForm">
+  <form class="form-panel reveal" style="padding:44px;border-radius:8px;" id="leadForm">
 
     <div class="form-group">
         <label>Имя</label>
@@ -769,22 +772,9 @@ works.forEach(w=>{
   el.innerHTML = `
     <img src="${w.img}" alt="${w.title}">
     <div class="play">▶</div>
-    <div class="overlay"><span class="cat">${w.label}</span><div class="title">${w.title}</div></div>
   `;
   el.addEventListener('click', ()=>openModal(w));
   grid.appendChild(el);
-});
-
-const filterBtns = document.querySelectorAll('.filter-btn');
-filterBtns.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    filterBtns.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const f = btn.dataset.filter;
-    document.querySelectorAll('.p-item').forEach(item=>{
-      item.classList.toggle('hide', f!=='all' && item.dataset.label!==f);
-    });
-  });
 });
 
 /* modal — теперь реально проигрывает видео, если оно указано у работы */
