@@ -24,7 +24,6 @@
   --ink-dim: #2b2b2b;
   --ink-faint: #4a4a4a;
 
-  /* Акцент */
   --gold: #85bb65;
   --gold-dim: rgba(133, 187, 101, 0.4);
 
@@ -77,7 +76,6 @@ h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:0.01em;text
 .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:pulse 2s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
 
-/* ============ SCRUBBER (signature element) ============ */
 #scrubber{
   position:fixed;top:0;left:0;width:100%;height:3px;
   background:rgba(0,0,0,0.08);
@@ -105,7 +103,6 @@ h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:0.01em;text
   transition:left .05s linear;
 }
 
-/* ============ NAV ============ */
 header{
   position:fixed;top:0;left:0;width:100%;z-index:800;
   padding:22px 0 0;
@@ -162,7 +159,6 @@ nav.links a:hover::after{width:100%;}
 @media(min-width:900px){.burger{display:none;}}
 .burger span{height:1px;background:var(--ink);width:100%;transition:transform .3s, opacity .3s;}
 
-/* ============ HERO ============ */
 .hero{
   position:relative;height:100svh;min-height:640px;
   display:flex;flex-direction:column;justify-content:flex-end;
@@ -186,7 +182,6 @@ nav.links a:hover::after{width:100%;}
 .grain{position:absolute;inset:0;opacity:.05;pointer-events:none;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-/* Затемнение видео + плавный переход в светло-серый фон страницы */
 .hero-media::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,
@@ -250,12 +245,10 @@ h1.hero-title em{font-style:normal;color:transparent;-webkit-text-stroke:1px var
 .scrolldown .line::after{content:'';position:absolute;top:-50px;left:0;width:100%;height:50%;background:var(--gold);animation:scrollLine 2.4s ease-in-out infinite;}
 @keyframes scrollLine{0%{top:-50px;}100%{top:100px;}}
 
-/* reveal utility */
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease), transform .9s var(--ease);}
 .reveal.in{opacity:1;transform:translateY(0);}
 .reveal-stagger > *{transition-delay:calc(var(--i,0) * 90ms);}
 
-/* ============ SECTION GENERIC ============ */
 section{position:relative;padding:140px 0;}
 @media(max-width:768px){section{padding:88px 0;}}
 @media(max-width:480px){section{padding:64px 0;}}
@@ -265,7 +258,6 @@ section{position:relative;padding:140px 0;}
 .section-head p{color:var(--ink-dim);font-size:16px;margin-top:16px;max-width:52ch;}
 .tc-num{font-family:var(--f-mono);font-weight:400;font-size:13px;color:var(--gold);letter-spacing:.06em;}
 
-/* ============ ABOUT ============ */
 .about{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center;}
 @media(max-width:900px){.about{grid-template-columns:1fr;gap:48px;}}
 .about-text p{font-size:19px;line-height:1.6;color:var(--ink);margin-bottom:22px;}
@@ -283,7 +275,6 @@ section{position:relative;padding:140px 0;}
 .about-collage:hover .ac1{transform:translateY(-6px);}
 .about-collage:hover .ac2{transform:translateY(6px);}
 
-/* ============ WHY (accordion blocks) ============ */
 .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
 @media(max-width:768px){.why-grid{grid-template-columns:1fr;}}
 .why-card{background:var(--black);transition:background .5s;}
@@ -304,7 +295,6 @@ section{position:relative;padding:140px 0;}
 .why-card.open .why-card-body{max-height:260px;}
 .why-card-body p{color:var(--ink-dim);font-size:15.5px;line-height:1.6;padding:0 36px 30px;}
 
-/* ============ STATS ============ */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;}
 @media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:32px 20px;}}
 .stat{border-top:1px solid var(--line);padding-top:22px;}
@@ -312,7 +302,6 @@ section{position:relative;padding:140px 0;}
 .stat .num .plus{color:var(--gold);font-size:0.5em;}
 .stat .label{color:var(--ink-dim);font-size:14px;margin-top:8px;}
 
-/* ============ PORTFOLIO ============ */
 .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
 @media(max-width:900px){.portfolio-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.portfolio-grid{grid-template-columns:1fr;}}
@@ -333,7 +322,6 @@ section{position:relative;padding:140px 0;}
   .p-item .play{opacity:1;transform:scale(1);}
 }
 
-/* modal */
 .modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(5,5,23,0.92);backdrop-filter:blur(6px);}
 .modal.open{display:flex;}
 .modal-inner{position:relative;box-shadow:0 40px 100px -30px rgba(0,0,0,0.8);}
@@ -341,13 +329,11 @@ section{position:relative;padding:140px 0;}
 .modal-close{position:absolute;top:-46px;right:0;font-family:var(--f-mono);font-weight:400;font-size:13px;color:#e0e0e0;display:flex;align-items:center;gap:8px;}
 .modal-close:hover{color:var(--gold);}
 
-/* ============ BACKSTAGE ============ */
 .backstage{position:relative;}
 .bs-media{position:relative;height:520px;border-radius:6px;overflow:hidden;margin-bottom:40px;}
 @media(max-width:768px){.bs-media{height:360px;}}
 .bs-media img{width:100%;height:100%;object-fit:cover;filter:brightness(0.9) saturate(0.95);transition:transform 1.2s var(--ease);}
 .bs-media:hover img{transform:scale(1.03);}
-/* Тёмная плашка снизу главного фото backstage */
 .bs-media::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(180deg, transparent 50%, rgba(5,5,23,0.8) 100%);
@@ -362,7 +348,7 @@ section{position:relative;padding:140px 0;}
 .team-name{font-family:var(--f-mono);font-weight:400;font-size:13px;color:var(--ink);letter-spacing:.02em;display:flex;flex-direction:column;gap:2px;}
 .team-name em{font-style:normal;font-size:11px;color:var(--ink-dim);}
 
-/* ============ TRUSTED / НАМ ДОВЕРЯЮТ (невидимая сетка логотипов) ============ */
+/* ============ TRUSTED / НАМ ДОВЕРЯЮТ (одинаковый размер логотипов) ============ */
 .trusted-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -374,24 +360,22 @@ section{position:relative;padding:140px 0;}
 @media(max-width:480px){.trusted-grid{grid-template-columns:repeat(2,1fr);}}
 .trusted-item{
   display:flex;align-items:center;justify-content:center;
-  height:96px;
+  height:100px;
   background:transparent;border:none;
-  padding:18px;
+  padding:14px;
 }
 .trusted-item img{
-  max-width:100%;max-height:42px;width:auto;height:auto;object-fit:contain;
+  width:120px;height:56px;object-fit:contain;
   filter:grayscale(1) opacity(0.55);
   transition:filter .4s var(--ease-soft), transform .4s var(--ease-soft), opacity .4s;
 }
 .trusted-item:hover img{filter:grayscale(0) opacity(1);transform:translateY(-2px);}
 
-/* ============ ROLES LIST ============ */
 .roles-list{margin-top:48px;}
 .roles-label{font-family:var(--f-mono);font-weight:400;font-size:12px;color:var(--ink-faint);letter-spacing:.08em;text-transform:uppercase;}
 .roles-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
 .roles-tags span{font-size:14px;color:var(--ink-dim);border:1px solid var(--line-hi);border-radius:100px;padding:8px 18px;}
 
-/* ============ TESTIMONIALS ============ */
 .testi-wrap{position:relative;max-width:760px;}
 .testi-slide{display:none;}
 .testi-slide.active{display:block;animation:fadeIn .6s var(--ease);}
@@ -406,7 +390,6 @@ section{position:relative;padding:140px 0;}
 .testi-dot{width:28px;height:2px;background:var(--line-hi);transition:background .3s;}
 .testi-dot.active{background:var(--gold);}
 
-/* ============ FINAL CTA ============ */
 .final{text-align:left;}
 .final-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;}
 @media(max-width:900px){.final-inner{grid-template-columns:1fr;gap:44px;}}
@@ -435,7 +418,6 @@ section{position:relative;padding:140px 0;}
 .form-submit:hover{background:#6fa350;}
 .form-note{font-family:var(--f-mono);font-weight:400;font-size:12px;color:var(--ink-faint);margin-top:16px;}
 
-/* ============ FOOTER ============ */
 footer{border-top:1px solid var(--line);padding:64px 0 36px;}
 .foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;margin-bottom:56px;}
 .foot-links{display:flex;gap:60px;flex-wrap:wrap;}
@@ -445,14 +427,12 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
 .foot-col a:hover{color:var(--ink);}
 .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-faint);border-top:1px solid var(--line);padding-top:28px;}
 
-/* Glass morphism — used sparingly (nav pill, CTA card) */
 .glass{
   background:rgba(247, 228, 158, 0.65);
   backdrop-filter:blur(18px) saturate(160%);
   -webkit-backdrop-filter:blur(18px) saturate(160%);
   border:1px solid rgba(0,0,0,0.12);
 }
-/* Серая панель для формы заявки — чуть темнее фона страницы */
 .form-panel{
   background:rgba(208, 208, 208, 0.6);
   backdrop-filter:blur(18px) saturate(140%);
@@ -481,7 +461,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
   </div>
 </header>
 
-<!-- mobile menu -->
 <div id="mobileMenu" class="glass" style="position:fixed;inset:0;z-index:850;display:none;flex-direction:column;justify-content:center;padding:40px;">
   <nav style="display:flex;flex-direction:column;gap:28px;font-size:32px;font-family:var(--f-display);font-weight:400;">
     <a href="#about">О нас</a>
@@ -494,11 +473,9 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
 
 <main id="top">
 
-  <!-- HERO -->
   <section class="hero" style="padding:0;">
     <div class="hero-media">
       <video id="heroVideo" autoplay muted loop playsinline poster="">
-        <!-- Замените src на файл реального шоурила клиента (mp4/webm) -->
         <source src="background.mp4" type="video/mp4">
       </video>
       <div class="fallback"></div>
@@ -517,7 +494,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     <div class="scrolldown"><span>SCROLL</span><span class="line"></span></div>
   </section>
 
-  <!-- ABOUT / TEAM (merged: команда + backstage) -->
   <section id="about" class="backstage">
     <div class="wrap">
       <div class="section-head reveal">
@@ -528,21 +504,20 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
       </div>
 
       <div class="bs-media reveal">
-        <img src="back.PNG" alt="Backstage съёмки">
+        <img src="b2.png" alt="Backstage съёмки">
       </div>
 
       <div class="bs-gallery reveal">
-        <div class="team-member"><img src="ad.jpeg"></div>
-        <div class="team-member"><img src="mil.jpeg" ></div>
-        <div class="team-member"><img src="lila.jpeg" ></div>
-        <div class="team-member"><img src="dau.jpeg" ></div>
-        <div class="team-member"><img src="muk.jpeg"></div>
+        <div class="team-member"><img src="b1.png"></div>
+        <div class="team-member"><img src="b5.jpeg" ></div>
+        <div class="team-member"><img src="b3.png" ></div>
+        <div class="team-member"><img src="b4.png" ></div>
+        <div class="team-member"><img src="b6.png"></div>
       </div>
 
     </div>
   </section>
 
-  <!-- TRUSTED / НАМ ДОВЕРЯЮТ -->
   <section id="trusted">
     <div class="wrap">
       <div class="section-head reveal">
@@ -550,29 +525,27 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
         <h2 style="margin-top:14px;">Нам доверяют</h2>
         <p>Бренды и компании, с которыми мы уже работали.</p>
       </div>
-      <!-- Логотипы: замените src на PNG-файлы/ссылки логотипов клиентов (16 штук) -->
       <div class="trusted-grid reveal">
         <div class="trusted-item"><img src="logo1.png" alt="Логотип клиента 1"></div>
-        <div class="trusted-item"><img src="logo2.png" alt="Логотип клиента 2"></div>
+        <div class="trusted-item"><img src="https://www.telford-plaza.com/v3/assets/blte5e6ece6e81816eb/blt4712cbfa52159c2d/6731862d188be3df9af06f7f/balabala_Shop_Logo%E5%95%86%E8%88%96%E5%95%86%E6%A8%99.png" alt="Логотип клиента 2"></div>
         <div class="trusted-item"><img src="logo3.png" alt="Логотип клиента 3"></div>
-        <div class="trusted-item"><img src="logo4.png" alt="Логотип клиента 4"></div>
+        <div class="trusted-item"><img src="logo4.jpg" alt="Логотип клиента 4"></div>
         <div class="trusted-item"><img src="logo5.png" alt="Логотип клиента 5"></div>
-        <div class="trusted-item"><img src="logo6.png" alt="Логотип клиента 6"></div>
-        <div class="trusted-item"><img src="logo7.png" alt="Логотип клиента 7"></div>
-        <div class="trusted-item"><img src="logo8.png" alt="Логотип клиента 8"></div>
-        <div class="trusted-item"><img src="logo9.png" alt="Логотип клиента 9"></div>
-        <div class="trusted-item"><img src="logo10.png" alt="Логотип клиента 10"></div>
-        <div class="trusted-item"><img src="logo11.png" alt="Логотип клиента 11"></div>
-        <div class="trusted-item"><img src="logo12.png" alt="Логотип клиента 12"></div>
-        <div class="trusted-item"><img src="logo13.png" alt="Логотип клиента 13"></div>
-        <div class="trusted-item"><img src="logo14.png" alt="Логотип клиента 14"></div>
-        <div class="trusted-item"><img src="logo15.png" alt="Логотип клиента 15"></div>
-        <div class="trusted-item"><img src="logo16.png" alt="Логотип клиента 16"></div>
+        <div class="trusted-item"><img src="https://tsgroup.kz/wp-content/uploads/2025/10/tetris-cg.png" alt="Логотип клиента 1">
+    </div>
+        <div class="trusted-item"><img src="https://static.tildacdn.pro/tild6638-6534-4663-b433-663662326230/Group_31.png" alt="Логотип клиента 7"></div>
+        <div class="trusted-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBKWHUevsZRL3wQfI3rgyG77o1j-OCXj35AG2p3GYBVA&s" alt="Логотип клиента 8"></div>
+        <div class="trusted-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdVgk8CrfhCLCEktJLDsymCaZCQiMfnw692dbZ6msX2bBY23TXWYDRVqU&s=10" alt="Логотип клиента 9"></div>
+        <div class="trusted-item"><img src="https://logos-world.net/wp-content/uploads/2022/04/Mothercare-Emblem.png" alt="Логотип клиента 10"></div>
+        <div class="trusted-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA11B00k1AZG4fuFfLoEioNGDsQuBfMQ1Ps-JjMPjr76xTTYofFi9ZPyqr&s=10" alt="Логотип клиента 11"></div>
+        <div class="trusted-item"><img src="https://i.pinimg.com/280x280_RS/8e/e3/09/8ee3092a0d1e7ad20d36cdc441a15c26.jpg" alt="Логотип клиента 12"></div>
+        <div class="trusted-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSa6PikzoM0RRKxWLSklGFtxeMzNCQy5pg9LyJVUFQ&s" alt="Логотип клиента 13"></div>
+        <div class="trusted-item"><img src="https://apkm.pro/wp-content/uploads/apkm_member_zerde.png" alt="Логотип клиента 14"></div>
+
       </div>
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
   <section id="work">
     <div class="wrap">
       <div class="section-head reveal">
@@ -587,7 +560,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     </div>
   </section>
 
-  <!-- WHY -->
   <section>
     <div class="wrap">
       <div class="section-head reveal">
@@ -621,7 +593,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     </div>
   </section>
 
-  <!-- STATS -->
   <section>
     <div class="wrap">
       <div class="stats-grid">
@@ -632,7 +603,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
   <section id="reviews">
     <div class="wrap">
       <div class="section-head reveal">
@@ -661,7 +631,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
     </div>
   </section>
 
-  <!-- FINAL CTA -->
   <section id="contact" class="final">
     <div class="wrap final-inner">
       <div class="reveal">
@@ -750,18 +719,22 @@ footer{border-top:1px solid var(--line);padding:64px 0 36px;}
 </div>
 
 <script>
-/* ---------- DATA: portfolio ---------- */
 const works = [
-  {cat: 'business', label: 'Коммерческая съемка', title: 'Коммерческая съёмка', img: 'kom1.png', video: 'kom1.mp4' },
-  {cat:'ads', label:'Reels', title: 'Reels', img: 'r1.png', video: 'r1.mp4'},
-  {cat:'reels', label:'Reels', title: 'Reels', img: 'r2.png', video: 'r2.mp4'},
-  {cat:'reels', label:'Reels', title: 'Reels', img: 'r3.png', video: 'r3.mp4'},
-  {cat:'interview', label:'Коммерческая съемка', title: 'Коммерческая съёмка', img: 'kom2.png', video: 'kom2.mp4'},
-  {cat:'reels', label:'Reels', title: 'Reels', img: 'r4.png', video: 'r4.mp4'},
-  {cat:'business', label:'Коммерческая съемка', title: 'Коммерческая съёмка', img: 'kom3.png', video: 'kom3.mp4'},
-  {cat:'ads', label:'Коммерческая съемка', title: 'Коммерческая съёмка', img: 'kom4.png', video: 'kom4.mp4'},
-  {cat:'reels', label:'Reels', title: 'Reels', img: 'r5.png', video: 'r5.mp4'},
-  {cat:'events', label:'Мероприятия', title: 'Мероприятие', img: 'iv.png'},
+  {img: '1P.png', video: '1P.MOV' },
+  {img: '2P.png', video: '2P.mp4' },
+  {img: '3P.png', video: '3P.mp4' },
+  {img: '4P.png', video: '4P.mp4' },
+  {img: '5P.png', video: '5P.mp4' },
+  {img: '6P.png', video: '6P.mp4' },
+  {img: '7P.png', video: '7P.mp4' },
+  {img: '8P.png', video: '8P.mp4' },
+  {img: '9P.png', video: '9P.mp4' },
+  {img: '10P.png', video: '10P.mp4' },
+  {img: '11P.png', video: '11P.mp4' },
+  {img: '12P.png', video: '12P.mp4' },
+  {img: '13P.png', video: '13P.mp4' },
+  {img: '14P.png', video: '14P.mp4' },
+  {img: '15P.png', video: '15P.mp4' },
 ];
 
 const grid = document.getElementById('portfolioGrid');
@@ -777,7 +750,6 @@ works.forEach(w=>{
   grid.appendChild(el);
 });
 
-/* modal — теперь реально проигрывает видео, если оно указано у работы */
 const modal = document.getElementById('videoModal');
 const modalVideo = document.getElementById('modalVideo');
 function openModal(w){
@@ -786,7 +758,7 @@ function openModal(w){
   if(w.video){
     modalVideo.src = w.video;
     modalVideo.muted = false;
-    modalVideo.play().catch(()=>{ /* браузер может блокировать автоплей со звуком — пользователь нажмёт play сам */ });
+    modalVideo.play().catch(()=>{ });
   } else {
     modalVideo.removeAttribute('src');
     modalVideo.load();
@@ -801,7 +773,6 @@ function closeModal(){
   modalVideo.load();
 }
 
-/* ---------- reveal on scroll ---------- */
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
@@ -813,19 +784,16 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:0.15});
 revealEls.forEach(el=>io.observe(el));
 
-/* hero entrance (immediate) */
 window.addEventListener('load', ()=>{
   document.querySelectorAll('.hero .reveal').forEach((el,i)=>{
     setTimeout(()=>el.classList.add('in'), 150 + i*140);
   });
 });
 
-/* hero video fallback: hide <video> if no source loads */
 const heroVideo = document.getElementById('heroVideo');
 heroVideo.addEventListener('error', ()=> heroVideo.style.display='none');
 heroVideo.addEventListener('loadeddata', ()=> heroVideo.style.display='block');
 
-/* ---------- counters ---------- */
 const counters = document.querySelectorAll('.js-counter');
 const counterIO = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
@@ -849,7 +817,6 @@ function animateCounter(el){
   requestAnimationFrame(tick);
 }
 
-/* ---------- testimonial slider ---------- */
 const slides = document.querySelectorAll('.testi-slide');
 const dots = document.querySelectorAll('.testi-dot');
 let ti = 0;
@@ -863,11 +830,10 @@ function showSlide(i){
 dots.forEach(d=>d.addEventListener('click', ()=>showSlide(parseInt(d.dataset.i,10))));
 setInterval(()=> showSlide((ti+1)%slides.length), 6000);
 
-/* ---------- scrubber / timecode (signature) ---------- */
 const scrubberFill = document.querySelector('#scrubber .fill');
 const playhead = document.querySelector('#scrubber .playhead');
 function fmtTimecode(p){
-  const totalFrames = Math.floor(p * 24 * 60 * 5); // stylised, purely decorative
+  const totalFrames = Math.floor(p * 24 * 60 * 5);
   const fps=24;
   const totalSec = Math.floor(totalFrames/fps);
   const h = String(Math.floor(totalSec/3600)).padStart(2,'0');
@@ -887,7 +853,6 @@ function onScroll(){
 window.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
 
-/* ---------- burger menu ---------- */
 const burgerBtn = document.getElementById('burgerBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 let menuOpen=false;
@@ -900,14 +865,11 @@ mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
   menuOpen=false; mobileMenu.style.display='none';
 }));
 
-/* ---------- WHY accordion ---------- */
 document.querySelectorAll('.why-card-head').forEach(head=>{
   head.addEventListener('click', ()=>{
     head.closest('.why-card').classList.toggle('open');
   });
 });
-
-/* ---------- Google Sheets ---------- */
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbxU190zhmRj19axKB8W2vyP4DTAjGLERXMmwuwfpG2YbMrxfTnHREsQZXL85ybVeoIPSg/exec";
 document.getElementById("leadForm").addEventListener("submit", function(e){
@@ -949,7 +911,6 @@ document.getElementById("leadForm").addEventListener("submit", function(e){
 
 });
 
-/* ---------- subtle hero parallax ---------- */
 window.addEventListener('scroll', ()=>{
   const y = window.scrollY;
   const media = document.querySelector('.hero-media');
